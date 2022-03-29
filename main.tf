@@ -14,6 +14,7 @@ resource "google_dataproc_cluster" "mycluster" {
 
     gce_cluster_config {
       network     = var.network
+      subnetwork  = var.subnetwork 
     }
 
     encryption_config {

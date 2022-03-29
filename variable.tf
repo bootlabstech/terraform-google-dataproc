@@ -23,6 +23,12 @@ variable "network" {
   default     = ""
 }
 
+variable "subnetwork" {
+  type        = string
+  description = "under the subnetwork the resources should be created"
+  default     = ""
+}
+
 
 variable "project" {
   type        = string
