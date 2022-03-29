@@ -17,12 +17,6 @@ variable "kms_key_name" {
   default     = ""
 }
 
-variable "network" {
-  type        = string
-  description = "under the network the resources should be created"
-  default     = ""
-}
-
 variable "subnetwork" {
   type        = string
   description = "under the subnetwork the resources should be created"
