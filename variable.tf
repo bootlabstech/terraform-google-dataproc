@@ -150,3 +150,8 @@ variable "optional_components" {
   type = list(string)
   description = "The optional_components"
 }
+
+variable "enable_http_port_access" {
+  type = string
+  description = "enable http access to specific ports on the cluster from external sources"
+}

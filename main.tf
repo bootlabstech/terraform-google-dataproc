@@ -13,6 +13,9 @@ resource "google_dataproc_cluster" "mycluster" {
       image_version   = var.cluster_version
       optional_components = var.optional_components
     }
+    endpoint_config {
+      enable_http_port_access = var.enable_http_port_access
+    }
 
     gce_cluster_config {
       subnetwork  = var.subnetwork 
