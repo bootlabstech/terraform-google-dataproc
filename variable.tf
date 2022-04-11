@@ -155,3 +155,7 @@ variable "enable_http_port_access" {
   type = string
   description = "enable http access to specific ports on the cluster from external sources"
 }
+variable "override_properties" {
+  type = string
+  description = "The override properties"
+}
