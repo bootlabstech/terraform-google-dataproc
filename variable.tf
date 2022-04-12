@@ -145,7 +145,7 @@ variable "internal_ip_only" {
   description = "By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. If set to true, all instances in the cluster will only have internal IP addresses. Note: Private Google Access (also known as privateIpGoogleAccess) must be enabled on the subnetwork that the cluster will be launched in."
   default     = false
 }
-
+/*
 variable "optional_components" {
   type = list(string)
   description = "The optional_components"
@@ -159,3 +159,4 @@ variable "override_properties" {
   type = string
   description = "The override properties"
 }
+*/

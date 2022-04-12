@@ -11,16 +11,16 @@ resource "google_dataproc_cluster" "mycluster" {
     
     software_config {
       image_version   = var.cluster_version
-      optional_components = var.optional_components
+  /*    optional_components = var.optional_components
       override_properties = {
         "dataproc:dataproc.allow.zero.workers"    = var.override_properties
+    }*/
     }
-    }
-    
+    /*
     endpoint_config {
       enable_http_port_access = var.enable_http_port_access
     }
-
+*/
     gce_cluster_config {
       subnetwork  = var.subnetwork 
       internal_ip_only = var.internal_ip_only
