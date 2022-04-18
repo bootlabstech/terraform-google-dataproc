@@ -3,15 +3,21 @@ resource "google_dataproc_cluster" "mycluster" {
   region   = var.region
   project  = var.project
   labels   = var.labels
+  provider = google-beta
 
   cluster_config {
    
     staging_bucket    = var.staging_bucket
-    
+ 
     software_config {
-      image_version   = var.cluster_version
+      image_version       = var.cluster_version
+      optional_components = var.optional_components
     }
-
+    
+    endpoint_config {
+    enable_http_port_access = var.enable_http_port_access
+    }
+    
     gce_cluster_config {
       network     = var.network
     }

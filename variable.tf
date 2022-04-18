@@ -41,7 +41,7 @@ variable "labels" {
 variable "staging_bucket" {
   type        = string
   description = "The Cloud Storage staging bucket used to stage files, such as Hadoop jars, between client machines and the cluster"
-  default     = "mar251700"
+  default     = "test1_232022"
 }
 
 variable "cluster_version" {
@@ -138,6 +138,17 @@ variable "preemptible_worker_disk_size" {
   type        = string
   description = "Size of the primary disk attached to each preemptible worker node, specified in GB."
   default     = 30
+}
+
+variable "optional_components" {
+  type = list(string)
+  description = "The optional_components"
+  default = ["ANACONDA", "JUPYTER" ]
+}
+variable "enable_http_port_access" {
+  type = string
+  description = " enable http access to specific ports on the cluster from external sources (aka Component Gateway)"
+  default = "true"
 }
 
 
