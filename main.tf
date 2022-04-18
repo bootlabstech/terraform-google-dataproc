@@ -6,7 +6,6 @@ resource "google_dataproc_cluster" "mycluster" {
   provider = google-beta
 
   cluster_config {
-   
     staging_bucket    = var.staging_bucket
  
     software_config {
