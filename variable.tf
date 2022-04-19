@@ -31,10 +31,10 @@ variable "labels" {
   description = "Set of labels to identify the cluster"
 }
 
-variable "staging_bucket" {
-  type        = string
-  description = "The Cloud Storage staging bucket used to stage files, such as Hadoop jars, between client machines and the cluster"
-}
+# variable "staging_bucket" {
+#   type        = string
+#   description = "The Cloud Storage staging bucket used to stage files, such as Hadoop jars, between client machines and the cluster"
+# }
 
 variable "cluster_version" {
   type = string
