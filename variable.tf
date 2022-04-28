@@ -13,6 +13,7 @@ variable "region" {
 variable "kms_key_name" {
   type        = string
   description = "The KMS key name to use for PD disk encryption for all instances in the cluster."
+  default = "" 
 }
 
 variable "subnetwork" {

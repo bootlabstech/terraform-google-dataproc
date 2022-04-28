@@ -23,8 +23,15 @@ resource "google_dataproc_cluster" "mycluster" {
       internal_ip_only = var.internal_ip_only
     }
 
-    encryption_config {
-      kms_key_name = var.kms_key_name
+    # encryption_config {
+    #   kms_key_name = var.kms_key_name
+    # }
+    
+    dynamic "encryption_config" {
+      for_each = var.kms_key_name == "" ? [] : [1]
+      content {
+        kms_key_name = var.kms_key_name 
+      } 
     }
 
     master_config {
