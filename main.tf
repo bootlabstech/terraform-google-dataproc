@@ -46,6 +46,7 @@ resource "google_dataproc_cluster" "mycluster" {
       # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
       service_account = var.service_account
       # network = "projects/host-project-dev-env-mum/global/networks/shared-vpc-development-01"
+      internal_ip_only=true
       subnetwork = var.subnetwork
       service_account_scopes = [
         "cloud-platform"
