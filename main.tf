@@ -4,7 +4,7 @@ resource "google_dataproc_cluster" "mycluster" {
   project = var.project
   graceful_decommission_timeout = var.graceful_decommission_timeout
   labels = {
-    project_id = var.project
+    
   }
 
   cluster_config {
