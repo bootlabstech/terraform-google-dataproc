@@ -64,7 +64,7 @@ data "google_project" "service_project" {
   project_id = var.project
 }
 
-resource "google_project_iam_binding" "network_binding" {
+resource "google_project_iam_binding" "network_binding1" {
   count   = 1
   project = var.host_project
   role    = "roles/compute.networkUser"
