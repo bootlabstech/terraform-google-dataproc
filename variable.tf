@@ -89,3 +89,7 @@ variable "preemptible_worker_num_instance" {
   description = "Specifies the number of preemptible worker nodes to create"
   default = 0
 }
+variable "host_project" {
+    type = string
+    description = "project id of host project"
+}

@@ -60,3 +60,17 @@ resource "google_dataproc_cluster" "mycluster" {
     }
   }
 }
+data "google_project" "service_project" {
+  project_id = var.project
+}
+
+resource "google_project_iam_binding" "network_binding" {
+  count   = 1
+  project = var.host_project
+  role    = "roles/compute.networkUser"
+  members = [
+    "serviceAccount:service-${data.google_project.service_project.number}@dataproc-accounts.iam.gserviceaccount.com",
+    "serviceAccount:service-${data.google_project.service_project.number}@compute-system.iam.gserviceaccount.com",
+    
+  ]
+}
