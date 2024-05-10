@@ -48,9 +48,13 @@ resource "google_dataproc_cluster" "mycluster" {
       # network = "projects/host-project-dev-env-mum/global/networks/shared-vpc-development-01"
       internal_ip_only=true
       subnetwork = var.subnetwork
-      service_account_scopes = [
-        "cloud-platform"
-      ]
+      service_account_scopes = [ # forces replacement
+                   "https://www.googleapis.com/auth/cloud.useraccounts.readonly",
+                   "https://www.googleapis.com/auth/devstorage.read_write",
+                   "https://www.googleapis.com/auth/logging.write",
+                   "https://www.googleapis.com/auth/cloud-platform",
+                    # (1 unchanged element hidden)
+                ]
     }
 
     # You can define multiple initialization_action blocks
