@@ -64,10 +64,6 @@ variable "image_version" {
     type = string
     description = "image version of os "
 }
-variable "service_account" {
-    type=string
-    description = "service account of project"
-}
 variable "subnetwork" {
     type = string
     description = "subnetwork "
@@ -92,4 +88,9 @@ variable "preemptible_worker_num_instance" {
 variable "host_project" {
     type = string
     description = "project id of host project"
+}
+variable "kms_key" {
+    type = string
+    description = "key for encription and decreption"
+  
 }
