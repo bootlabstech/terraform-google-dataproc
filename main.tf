@@ -32,7 +32,8 @@ resource "google_dataproc_cluster" "mycluster" {
       min_cpu_platform = var.min_cpu_platform_worker
       disk_config {
         boot_disk_size_gb = var.boot_disk_size_gb_worker
-        num_local_ssds    = 1
+        boot_disk_type = var.boot_disk_type_master
+        num_local_ssds = 0
       }
     }
 
@@ -45,6 +46,7 @@ resource "google_dataproc_cluster" "mycluster" {
       image_version =var.image_version
       override_properties = {
         "dataproc:dataproc.allow.zero.workers" = "true"
+        "core:hadoop.security.token.service.use_ip"="true"
       }
     }
 
