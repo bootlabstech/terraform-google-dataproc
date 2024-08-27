@@ -7,7 +7,7 @@ resource "google_dataproc_cluster" "mycluster" {
     project_id = var.project
   }
   depends_on = [ google_project_iam_binding.kms_dataproc,
-                 google_project_iam_binding.network_binding1000,
+                #  google_project_iam_binding.network_binding1000,
                  google_project_iam_binding.serviceaccount_access,
                   ]
 
