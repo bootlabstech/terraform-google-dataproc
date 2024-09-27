@@ -12,10 +12,10 @@ resource "google_dataproc_cluster" "mycluster" {
                   ]
 
   cluster_config {
-    # autoscaling_config {
-    #   policy_uri = var.policy_uri
+    autoscaling_config {
+      policy_uri = var.policy_uri
       
-    # }
+    }
     encryption_config {
       kms_key_name = var.kms_key
     }
