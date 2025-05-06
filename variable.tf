@@ -94,7 +94,3 @@ variable "kms_key" {
     description = "key for encription and decreption"
   
 }
-# variable "policy_uri" {
-#     type=string
-#     description = "URL for autoscling"  
-# }
