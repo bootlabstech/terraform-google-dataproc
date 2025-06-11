@@ -12,7 +12,6 @@ resource "google_dataproc_cluster" "mycluster" {
      ]
   }
   depends_on = [ google_project_iam_binding.kms_dataproc,
-                 google_project_iam_binding.network_binding1000,
                  google_project_iam_binding.serviceaccount_access,
                   ]
 
@@ -82,16 +81,7 @@ data "google_project" "service_project" {
   project_id = var.project
 }
 
-resource "google_project_iam_binding" "network_binding1000" {
-  count   = 1
-  project = var.host_project
-  role    = "roles/compute.networkUser"
-  members = [
-    "serviceAccount:service-${data.google_project.service_project.number}@dataproc-accounts.iam.gserviceaccount.com",
-    "serviceAccount:service-${data.google_project.service_project.number}@compute-system.iam.gserviceaccount.com",
-    
-  ]
-}
+
 resource "google_project_iam_binding" "kms_dataproc" {
   count   = 1
   project =var.project
