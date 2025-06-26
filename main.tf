@@ -6,16 +6,17 @@ resource "google_dataproc_cluster" "mycluster" {
   labels = {
     project_id = var.project
   }
+  lifecycle {
+    ignore_changes = [ 
+      labels
+     ]
+  }
   depends_on = [ google_project_iam_binding.kms_dataproc,
-                #  google_project_iam_binding.network_binding1000,
+                 google_project_iam_binding.network_binding1000,
                  google_project_iam_binding.serviceaccount_access,
                   ]
 
   cluster_config {
-    # autoscaling_config {
-    #   policy_uri = var.policy_uri
-      
-    # }
     encryption_config {
       kms_key_name = var.kms_key
     }
@@ -81,26 +82,26 @@ data "google_project" "service_project" {
   project_id = var.project
 }
 
-# resource "google_project_iam_binding" "network_binding1000" {
-#   count   = 1
-#   project = var.host_project
-#    lifecycle {
-#     ignore_changes = [ members ]
-#   }
-#   role    = "roles/compute.networkUser"
-#   members = [
-#     "serviceAccount:service-${data.google_project.service_project.number}@dataproc-accounts.iam.gserviceaccount.com",
-#     "serviceAccount:service-${data.google_project.service_project.number}@compute-system.iam.gserviceaccount.com",
+resource "google_project_iam_binding" "network_binding1000" {
+  count   = 1
+  project = var.host_project
+  role    = "roles/compute.networkUser"
+  lifecycle {
+    ignore_changes = [ members ]
+  }
+  members = [
+    "serviceAccount:service-${data.google_project.service_project.number}@dataproc-accounts.iam.gserviceaccount.com",
+    "serviceAccount:service-${data.google_project.service_project.number}@compute-system.iam.gserviceaccount.com",
     
-#   ]
-# }
+  ]
+}
 resource "google_project_iam_binding" "kms_dataproc" {
   count   = 1
   project =var.project
-   lifecycle {
+  role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+  lifecycle {
     ignore_changes = [ members ]
   }
-  role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
   members = [
     "serviceAccount:service-${data.google_project.service_project.number}@dataproc-accounts.iam.gserviceaccount.com",
     "serviceAccount:service-${data.google_project.service_project.number}@compute-system.iam.gserviceaccount.com",
@@ -109,10 +110,10 @@ resource "google_project_iam_binding" "kms_dataproc" {
 resource "google_project_iam_binding" "serviceaccount_access" {
   count   = 1
   project =var.project
-   lifecycle {
+  role    = "roles/compute.admin"
+  lifecycle {
     ignore_changes = [ members ]
   }
-  role    = "roles/compute.admin"
   members = [
     "serviceAccount:${data.google_project.service_project.number}-compute@developer.gserviceaccount.com",
     
