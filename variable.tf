@@ -94,3 +94,26 @@ variable "kms_key" {
     description = "key for encription and decreption"
   
 }
+variable "alation_api_key" {
+  description = "Alation API Token"
+  type        = string
+  sensitive   = true
+}
+
+variable "alation_base_url" {
+  description = "Alation Base URL"
+  type        = string
+  default     = "https://mahindra-auto-acs-prod.ap.alationcloud.com/app"
+}
+
+variable "openlineage_version" {
+  description = "OpenLineage Spark version"
+  type        = string
+  default     = "1.23.0"
+}
+
+variable "openlineage_namespace" {
+  description = "OpenLineage namespace"
+  type        = string
+  default     = "dev-cluster"
+}
