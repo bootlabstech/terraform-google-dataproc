@@ -52,13 +52,13 @@ resource "google_dataproc_cluster" "mycluster" {
         "dataproc:dataproc.allow.zero.workers" = "true"
         "core:hadoop.security.token.service.use_ip"="true"
       "spark:spark.jars.packages"                     = "io.openlineage:openlineage-spark_2.12:${var.openlineage_version}"
-    "spark:spark.extraListeners"                    = "io.openlineage.spark.agent.OpenLineageSparkListener"
-    "spark:spark.openlineage.transport.type"        = "http"
-    "spark:spark.openlineage.transport.url"         = var.alation_base_url
-    "spark:spark.openlineage.transport.endpoint"    = var.openlineage_endpoint
-    "spark:spark.openlineage.transport.auth.type"   = "api_key"
-    "spark:spark.openlineage.transport.auth.apiKey" = var.alation_api_key
-    "spark:spark.openlineage.namespace"             = var.openlineage_namespace
+      "spark:spark.extraListeners"                    = "io.openlineage.spark.agent.OpenLineageSparkListener"
+      "spark:spark.openlineage.transport.type"        = "http"
+      "spark:spark.openlineage.transport.url"         = var.alation_base_url
+      "spark:spark.openlineage.transport.endpoint"    = var.openlineage_endpoint
+      "spark:spark.openlineage.transport.auth.type"   = "api_key"
+      "spark:spark.openlineage.transport.auth.apiKey" = var.alation_api_key
+      "spark:spark.openlineage.namespace"             = var.openlineage_namespace
       }
     }
 
