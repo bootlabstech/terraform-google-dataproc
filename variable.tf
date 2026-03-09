@@ -117,3 +117,8 @@ variable "openlineage_namespace" {
   type        = string
   default     = "dev-cluster"
 }
+variable "openlineage_endpoint" {
+  description = "OpenLineage namespace"
+  type        = string
+ 
+}

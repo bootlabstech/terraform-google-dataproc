@@ -55,7 +55,7 @@ resource "google_dataproc_cluster" "mycluster" {
     "spark:spark.extraListeners"                    = "io.openlineage.spark.agent.OpenLineageSparkListener"
     "spark:spark.openlineage.transport.type"        = "http"
     "spark:spark.openlineage.transport.url"         = var.alation_base_url
-    "spark:spark.openlineage.transport.endpoint"    = "open_lineage_event"
+    "spark:spark.openlineage.transport.endpoint"    = var.openlineage_endpoint
     "spark:spark.openlineage.transport.auth.type"   = "api_key"
     "spark:spark.openlineage.transport.auth.apiKey" = var.alation_api_key
     "spark:spark.openlineage.namespace"             = var.openlineage_namespace
